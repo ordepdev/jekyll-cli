@@ -1,0 +1,17 @@
+{
+  "name": "jekyll-cli",
+  "version": "0.0.1",
+  "description": "jekyll basics with node",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [
+    "jekyll",
+    "cli"
+  ],
+  "author": "ordepdev",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.8.4",
+  }
+}
