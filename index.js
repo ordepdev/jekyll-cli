@@ -43,9 +43,12 @@ module.exports.publish = function (options, cb) {
         draft: options.draft,
         create: options.create
     });
+    var postsFolder = '_posts';
+    
+    var newPath = jkl.path.replace(jkl.folder, postsFolder);
 
-    var newPath = jkl.path.replace('drafts', 'posts');
-
+    !fs.existsSync(postsFolder) && fs.mkdirSync(postsFolder);
+    
     if (!fs.existsSync(jkl.path)) {
         return cb('file doesn\' exist');
     }
