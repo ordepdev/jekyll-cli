@@ -1,9 +1,9 @@
 var fs = require('fs');
 var Jekyll = require('./bin');
 
-module.exports.new = function (title, options, cb) {
+module.exports.new = function (options, cb) {
     var jkl = new Jekyll({
-        title:   title,
+        title:   options.title,
         draft:   options.draft,
         create:  options.create
     });
@@ -20,4 +20,36 @@ module.exports.new = function (title, options, cb) {
         }
         cb(null, jkl.path);
     });
+}
+
+module.exports.remove = function (options, cb) {
+    var jkl = new Jekyll({
+        title: options.title, 
+        draft: options.draft,
+        create: options.create
+    });
+
+    if (!fs.existsSync(jkl.path)) {
+        return cb('file doesn\' exist');
+    }
+
+    fs.unlinkSync(jkl.path);
+    cb(null, jkl.path);
+}
+
+module.exports.publish = function (options, cb) {
+    var jkl = new Jekyll({
+        title: options.title, 
+        draft: options.draft,
+        create: options.create
+    });
+
+    var newPath = jkl.path.replace('drafts', 'posts');
+
+    if (!fs.existsSync(jkl.path)) {
+        return cb('file doesn\' exist');
+    }
+
+    fs.renameSync(jkl.path, newPath);
+    cb(null, newPath);
 }
