@@ -12,8 +12,8 @@ var Jekyll = function (options) {
     this.init(options)
 }
 
-Jekyll.prototype.genFilePath = function (isDraft) {
-    this.folder = isDraft ? '_drafts' : '_posts';
+Jekyll.prototype.genFilePath = function (draft) {
+    this.folder = draft ? '_drafts' : '_posts';
     this.path = path.join(this.folder, this.file);
 }
 
@@ -35,8 +35,8 @@ Jekyll.prototype.genFileContent = function () {
 
 Jekyll.prototype.init = function (options) {
     this.genFileName(options.title);
-    this.genFilePath(options.isDraft);
-    this.genFileContent();
+    this.genFilePath(options.draft);
+    options.create && this.genFileContent();
 }
 
 module.exports = Jekyll;

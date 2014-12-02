@@ -3,8 +3,9 @@ var Jekyll = require('./bin');
 
 module.exports.new = function (title, options, cb) {
     var jkl = new Jekyll({
-        title: title,
-        isDraft: options.isDraft
+        title:   title,
+        draft:   options.draft,
+        create:  options.create
     });
 
     !fs.existsSync(jkl.folder) && fs.mkdirSync(jkl.folder);
