@@ -2,6 +2,10 @@
   "name": "jkl-cli",
   "version": "0.0.1",
   "description": "jekyll basics with node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ordepdev/jekyll-cli.git"
+  },
   "bin": {
     "jkl": "cli.js"
   },
