@@ -1,8 +1,13 @@
 {
-  "name": "jekyll-cli",
+  "name": "jkl-cli",
   "version": "0.0.1",
   "description": "jekyll basics with node",
-  "main": "index.js"
+  "bin": {
+    "jkl": "cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no teste specified\" && exit 1"
+  },
   "keywords": [
     "jekyll",
     "cli"

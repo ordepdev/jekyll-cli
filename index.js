@@ -24,13 +24,13 @@ module.exports.new = function (options, cb) {
 
 module.exports.remove = function (options, cb) {
     var jkl = new Jekyll({
-        title: options.title, 
+        title: options.title,
         draft: options.draft,
         create: options.create
     });
 
     if (!fs.existsSync(jkl.path)) {
-        return cb('file doesn\' exist');
+        return cb('file not found');
     }
 
     fs.unlinkSync(jkl.path);
@@ -39,18 +39,18 @@ module.exports.remove = function (options, cb) {
 
 module.exports.publish = function (options, cb) {
     var jkl = new Jekyll({
-        title: options.title, 
+        title: options.title,
         draft: options.draft,
         create: options.create
     });
+
     var postsFolder = '_posts';
-    
     var newPath = jkl.path.replace(jkl.folder, postsFolder);
 
     !fs.existsSync(postsFolder) && fs.mkdirSync(postsFolder);
-    
+
     if (!fs.existsSync(jkl.path)) {
-        return cb('file doesn\' exist');
+        return cb('file not found');
     }
 
     fs.renameSync(jkl.path, newPath);

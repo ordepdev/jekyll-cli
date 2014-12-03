@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var jkl  = require('./index');
 var argv = process.argv.slice(2);
 var file = process.argv[3];
@@ -5,7 +7,7 @@ var file = process.argv[3];
 var options = {};
 
 function hasFile (filename) {
-  return(filename && filename.indexOf('-') !== 0);
+  return filename && filename.indexOf('-') !== 0;
 }
 
 if (argv.indexOf('-h') !== -1) {
@@ -14,9 +16,9 @@ if (argv.indexOf('-h') !== -1) {
     '  Usage',
     '    jkl <cmd> <options>',
     '  Commands',
-    '    new <title> <options>', 
+    '    new <title> <options>',
     '    remove <title> <options>',
-    '    publish <title>', 
+    '    publish <title>',
     '    ',
     '  Options',
     '    -d         Changes dir to _drafts'
@@ -45,7 +47,7 @@ if (argv.indexOf('new') !== -1) {
 
 if (argv.indexOf('remove') !== -1) {
   if (!hasFile(file)) return;
-   
+
   options.title = file;
   options.create = false;
 
@@ -59,7 +61,7 @@ if (argv.indexOf('remove') !== -1) {
 
 if (argv.indexOf('publish') !== -1) {
   if (!hasFile(file)) return;
-  
+
   options.title = file;
   options.create = false;
   options.draft = true;
